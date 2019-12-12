@@ -4,6 +4,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +34,9 @@ public class StudentController {
 		return studentserviceV2.findAll();
 	}
 	
+	
+	@RequestMapping(value = "/v2/student", method = RequestMethod.POST)
+	public Student createStudentV2(@RequestBody Student student) {
+		return studentserviceV2.save(student)	;
+	}
 }
